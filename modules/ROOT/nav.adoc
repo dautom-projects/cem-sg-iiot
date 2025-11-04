@@ -1,0 +1,6 @@
+    * xref:index.adoc[Plataforma de datos IoT San Gabriel]
+    ** xref:opc.adoc[Ignition como Cliente OPC UA]
+    ** xref:ignition_mqtt.adoc[Modulo MQTT Transmission (Cirrus Link)]
+    ** xref:uns.adoc[Modelado UNS]
+    ** xref:troubleshooting.adoc[Troubleshooting]
+    ** xref:validation.adoc[Validación de datos]
