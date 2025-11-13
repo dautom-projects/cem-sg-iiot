@@ -39,16 +39,13 @@
 <ul class="nav-list">
   <li class="nav-item has-children" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Plataforma de datos IoT San Miguel</a>
+    <a class="nav-link" href="index.html">Plataforma de datos IoT San Gabriel</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="opc.html">Ignition como Cliente OPC UA</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="uns.html">Modelado UNS</a>
@@ -87,11 +84,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cempro</a></li>
-    <li><a href="index.html">Plataforma de datos IoT San Miguel</a></li>
+    <li><a href="index.html">Plataforma de datos IoT San Gabriel</a></li>
     <li><a href="opc.html">Ignition como Cliente OPC UA</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sm-iiot/modules/ROOT/pages/opc.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sg-iiot/modules/ROOT/pages/opc.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -123,7 +120,7 @@
 <p><strong>Tipo de conexión</strong>: Seleccionar <strong>OPC UA Connection</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>Nombre de conexión</strong>: Definir identificador según estándar de nomenclatura interna (ejemplo: <code>Siemens_Calera</code>)</p>
+<p><strong>Nombre de conexión</strong>: Definir identificador según estándar de nomenclatura interna (ejemplo: <code>Siemens_Clinkerizacion</code>)</p>
 </div>
 </div>
 </div>
@@ -150,18 +147,18 @@ Sin embargo,es posible acceder a configuraciones avanzadas (p. ej., resolución 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Discovery URL</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>opc.tcp://10.80.2.70:4862/discovery</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>opc.tcp://10.11.75.35:4863/discovery</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dirección principal de descubrimiento. Ignition obtiene automáticamente los Endpoints disponibles a partir de este valor.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Endpoint URL</strong> <em>(automático)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>opc.tcp://CLIENTE3:4862</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>opc.tcp://10.11.75.35:4863</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Se completa automáticamente al conectarse al servidor. Indica el Endpoint utilizado.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Endpoint Host Override</strong> <em>(opcional)</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10.80.2.70</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Permite forzar la IP real del servidor si el nombre (CLIENTE3) no se resuelve correctamente en DNS.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10.11.75.35</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite forzar la IP real del servidor si el hostname no se resuelve correctamente en DNS.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Security Mode</strong> <em>(opcional)</em></p></td>
@@ -246,14 +243,14 @@ Sin embargo,es posible acceder a configuraciones avanzadas (p. ej., resolución 
 </ol>
 </div>
 <div class="paragraph">
-<p>El OPC Browser es una herramienta accesible desde el Ignition Designer, dando click al Icono + en la barra superior del Tag Browser y seleccionando "Browse Devices".</p>
+<p>El OPC Browser es una herramienta accesible desde el Ignition Designer, dando click al Icono + en la barra superior del Tag Browser y seleccionando "Browse Devices". Desde esta ventana es posible seleccionar las fuentes OPC UA disponibles para crear la estructura de tags de acuerdo a la VMT</p>
 </div>
 <div class="paragraph">
-<p><strong>Ejemplo de path identificado</strong>: <code>ns=1;s=t|WINCC_CALERA_HORNOS_SRVCAL01::</code></p>
+<p><strong>Ejemplo de path identificado</strong>: <code>ns=1;s=t|E51_201_SRV01::K011/S14/G51/K9A_BW1_FD_I2/FD_I2.A1</code></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/cempro/OPC_browser.png" alt="OPC Browser" width="620">
+<img src="_images/cempro/OPC.png" alt="OPC Tag example" width="620">
 </div>
 </div>
 </div>
@@ -293,11 +290,11 @@ Sin embargo,es posible acceder a configuraciones avanzadas (p. ej., resolución 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OPC</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Siemens_Calera</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Siemens OPC</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ns=1;s=t|WINCC_CALERA_HORNOS_SRVCAL01::</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`ns=1;s=t</p></td>
 </tr>
 </tbody>
 </table>
@@ -317,7 +314,7 @@ Sin embargo,es posible acceder a configuraciones avanzadas (p. ej., resolución 
 <p><strong>Cempro</strong> (Enterprise)</p>
 </li>
 <li>
-<p><strong>San Miguel</strong> (Site)</p>
+<p><strong>San Gabriel</strong> (Site)</p>
 </li>
 <li>
 <p><strong>Calera</strong> (Area)</p>
@@ -358,7 +355,7 @@ Sin embargo,es posible acceder a configuraciones avanzadas (p. ej., resolución 
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Plataforma de datos IoT San Miguel</a></span>
+  <span class="prev"><a href="index.html">Plataforma de datos IoT San Gabriel</a></span>
   <span class="next"><a href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a></span>
 </nav>
 </article>

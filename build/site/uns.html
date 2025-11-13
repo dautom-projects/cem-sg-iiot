@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Modelado UNS en Ignition :: CEMPRO Docs</title>
-    <link rel="prev" href="ibsnow.html">
+    <link rel="prev" href="ignition_mqtt.html">
     <link rel="next" href="troubleshooting.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="./_/css/site.css">
@@ -39,16 +39,13 @@
 <ul class="nav-list">
   <li class="nav-item has-children" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Plataforma de datos IoT San Miguel</a>
+    <a class="nav-link" href="index.html">Plataforma de datos IoT San Gabriel</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="opc.html">Ignition como Cliente OPC UA</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="uns.html">Modelado UNS</a>
@@ -87,11 +84,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cempro</a></li>
-    <li><a href="index.html">Plataforma de datos IoT San Miguel</a></li>
+    <li><a href="index.html">Plataforma de datos IoT San Gabriel</a></li>
     <li><a href="uns.html">Modelado UNS</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sm-iiot/modules/ROOT/pages/uns.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sg-iiot/modules/ROOT/pages/uns.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -116,19 +113,14 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">Cempro (Enterprise)
-└── San Miguel (Site)
-    ├── Calera (Area)
-    │   └── Horno 3 (Work Unit)
-    │       ├── Edge
-    │       ├── Edge Basic
-    │       ├── Scanner
-    │       └── Scanner 12
-    └── Clinkerizacion (Area)
-        └── Horno 3 (Work Unit)
-            ├── Edge
-            ├── Edge Basic
-            ├── Scanner
-            └── Scanner 12</code></pre>
+└── San Gabriel (Site)
+    └── Clinkerización (Area)
+        └── Horno 1 (Work Unit)
+            └── Edge
+                ├── Aditivos
+                ├── Alimentación horno
+                ├── Cemento 1
+                └── […]</code></pre>
 </div>
 </div>
 </div>
@@ -142,7 +134,7 @@
 <p>Los tags provenientes del servidor OPC UA tienen estructura técnica poco descriptiva:</p>
 </div>
 <div class="paragraph">
-<p><strong>Ejemplo de path OPC UA</strong>: <code>ns=1;s=t|WINCC_CALERA_HORNOS_SRVCAL01::SM_323_MR1_PCSPM</code></p>
+<p><strong>Ejemplo de path OPC UA</strong>: <code>ns=1;s=t|E51_201_SRV01::K011/S14/G51/K9A_BW1_FD_I2/FD_I2.A1</code></p>
 </div>
 <div class="paragraph">
 <p>Esta nomenclatura incluye:</p>
@@ -153,10 +145,10 @@
 <p><code>ns=1</code>: Namespace del servidor OPC UA</p>
 </li>
 <li>
-<p><code>s=t|WINCC_CALERA_HORNOS_SRVCAL01::</code>: Prefijo del sistema SCADA</p>
+<p><code>s=t|E51_201_SRV01::</code>: Prefijo del sistema SCADA</p>
 </li>
 <li>
-<p><code>SM_323_MR1_PCSPM</code>: Identificador técnico de la variable</p>
+<p><code>K011/S14/G51/K9A_BW1_FD_I2/FD_I2.A1</code>: Identificador técnico de la variable</p>
 </li>
 </ul>
 </div>
@@ -167,7 +159,7 @@
 <p>El mismo tag se modela en la estructura UNS como:</p>
 </div>
 <div class="paragraph">
-<p><strong>Path UNS</strong>: <code>Cempro/San Miguel/Calera/Horno 3/Scanner/SM_323_MR1_PCSPM</code></p>
+<p><strong>Path UNS</strong>: <code>Cempro/San Gabriel/Clinkerización/Horno 1/Edge/Aditivos/K9A_BW1_FD_I2</code></p>
 </div>
 <div class="paragraph">
 <p>Esta estructura proporciona contexto semántico:</p>
@@ -181,16 +173,19 @@
 <p><strong>San Miguel</strong>: Planta específica</p>
 </li>
 <li>
-<p><strong>Calera</strong>: Área de producción (diferente de Clinkerización)</p>
+<p><strong>Clinkerización</strong>: Área de producción</p>
 </li>
 <li>
-<p><strong>Horno 3</strong>: Equipo específico</p>
+<p><strong>Horno 1</strong>: Equipo específico</p>
 </li>
 <li>
-<p><strong>Scanner</strong>: Tipo de dispositivo o sistema</p>
+<p><strong>Edge</strong>: Tipo de dispositivo o sistema</p>
 </li>
 <li>
-<p><strong>SM_323_MR1_PCSPM</strong>: Variable específica con significado técnico</p>
+<p><strong>Aditivos</strong>: Categoría funcional dentro del dispositivo</p>
+</li>
+<li>
+<p><strong>K9A_BW1_FD_I2</strong>: Variable específica</p>
 </li>
 </ul>
 </div>
@@ -212,12 +207,14 @@
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">Horno_UDT
 ├── Parameters (configuración)
-│   ├── OPC: Siemens_Calera
-│   └── Path: ns=1;s=t|WINCC_CALERA_HORNOS_SRVCAL01::
+│   ├── OPC: Siemens OPC
+│   └── Path: ns=1;s=t|E51_201_SRV01::
 ├── Edge (variables de control)
-├── Edge Basic (variables básicas)
-├── Scanner (variables de sensores)
-└── Scanner 12 (variables específicas sensor 12)</code></pre>
+    ├── Aditivos
+        ├──K9A_BW1_FA_I2
+        ├──K9A_BW1_FB_I2
+        ├──K9A_BW1_FC_I2
+        └── […]</code></pre>
 </div>
 </div>
 </div>
@@ -255,7 +252,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a></span>
+  <span class="prev"><a href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a></span>
   <span class="next"><a href="troubleshooting.html">Troubleshooting</a></span>
 </nav>
 </article>

@@ -108,7 +108,8 @@ Una vez establecida la conexión OPC UA:
 . Seguir la estructura jerárquica ISA-95:
    * *Cempro* (Enterprise)
    * *San Gabriel* (Site)  
-   * *Calera* (Area)
+   * *Clinkerización* (Area)
+   * *Horno 1* (Línea)
    * *Equipos específicos* (Work Units)
 
 image::cempro/Estructura_tags.png[Estructura de Tags,600,align="center"]

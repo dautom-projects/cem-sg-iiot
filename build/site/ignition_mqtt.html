@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Configuración MQTT Transmission en Ignition :: CEMPRO Docs</title>
     <link rel="prev" href="opc.html">
-    <link rel="next" href="ibsnow.html">
+    <link rel="next" href="uns.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="./_/css/site.css">
   </head>
@@ -39,16 +39,13 @@
 <ul class="nav-list">
   <li class="nav-item has-children" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Plataforma de datos IoT San Miguel</a>
+    <a class="nav-link" href="index.html">Plataforma de datos IoT San Gabriel</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="opc.html">Ignition como Cliente OPC UA</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="uns.html">Modelado UNS</a>
@@ -87,11 +84,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cempro</a></li>
-    <li><a href="index.html">Plataforma de datos IoT San Miguel</a></li>
+    <li><a href="index.html">Plataforma de datos IoT San Gabriel</a></li>
     <li><a href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sm-iiot/modules/ROOT/pages/ignition_mqtt.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sg-iiot/modules/ROOT/pages/ignition_mqtt.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -166,7 +163,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag Path</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cempro/San Miguel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cempro/San Gabriel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ruta base de los tags a publicar</p></td>
 </tr>
 <tr>
@@ -186,7 +183,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Edge Node ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>San Miguel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>San Gabriel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identificador de nodo edge</p></td>
 </tr>
 </tbody>
@@ -313,7 +310,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Username</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sanmiguel.edge.transmission</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sangabriel.edge.transmission</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Password</strong></p></td>
@@ -407,7 +404,7 @@
 <p>Configurar conexión al broker usando los mismos parámetros del servidor configurado en Ignition</p>
 </li>
 <li>
-<p>Conectar usando las credenciales <code>sanmiguel.edge.transmission</code></p>
+<p>Conectar usando las credenciales <code>sangabriel.edge.transmission</code></p>
 </li>
 </ul>
 </div>
@@ -417,7 +414,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Los topics siguen el patrón: <code>spBv1.0/Cempro/NDATA/San Miguel</code></p>
+<p>Los topics siguen el patrón: <code>spBv1.0/Cempro/NDATA/San Gabriel</code></p>
 </li>
 <li>
 <p>Validar que aparezcan mensajes NBIRTH al inicio (estructura de datos)</p>
@@ -573,7 +570,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Añadir tags al Tag Provider <code>CEM_UNS</code> bajo la ruta <code>Cempro/San Miguel</code></p>
+<p>Añadir tags al Tag Provider <code>CEM_UNS</code> bajo la ruta <code>Cempro/San Gabriel</code></p>
 </li>
 <li>
 <p>Los cambios se reflejan automáticamente en las publicaciones MQTT</p>
@@ -607,7 +604,7 @@
 </div>
 <nav class="pagination">
   <span class="prev"><a href="opc.html">Ignition como Cliente OPC UA</a></span>
-  <span class="next"><a href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a></span>
+  <span class="next"><a href="uns.html">Modelado UNS</a></span>
 </nav>
 </article>
   </div>

@@ -38,16 +38,13 @@
 <ul class="nav-list">
   <li class="nav-item has-children" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Plataforma de datos IoT San Miguel</a>
+    <a class="nav-link" href="index.html">Plataforma de datos IoT San Gabriel</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="opc.html">Ignition como Cliente OPC UA</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="ignition_mqtt.html">Modulo MQTT Transmission (Cirrus Link)</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ibsnow.html">IoT Bridge for Snowflake (Cirrus Link)</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="uns.html">Modelado UNS</a>
@@ -86,11 +83,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Cempro</a></li>
-    <li><a href="index.html">Plataforma de datos IoT San Miguel</a></li>
+    <li><a href="index.html">Plataforma de datos IoT San Gabriel</a></li>
     <li><a href="validation.html">Validación de datos</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sm-iiot/modules/ROOT/pages/validation.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///D:/Users/rugel/Documents/CEM/cem-sg-iiot/modules/ROOT/pages/validation.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -147,9 +144,9 @@
 <ol class="loweralpha" type="a">
 <li>
 <p>Ubicar el tag objetivo en la pantalla correspondiente del SCADA.</p>
-<div class="imageblock text-center">
+<div class="imageblock text-center unresolved">
 <div class="content">
-<img src="_images/cempro/scada_tag_sample.png" alt="scada tag sample" width="800">
+<img src="cempro/scada_tag_sample.png" alt="scada tag sample" width="800">
 </div>
 <div class="title">Figure 1. Captura de la tag en SCADA</div>
 </div>
@@ -166,7 +163,7 @@
 En este caso el <strong>UNS Path</strong> es</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Cempro/San Miguel/Calera/Horno 3/Edge/Coke/Setpoint_Kilogramos_Coke.</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Cempro/San Gabriel/Clinkerización/Horno 1/Edge/Aditivos/K9A_BW1_FA_I2.</code></pre>
 </div>
 </div>
 </li>
@@ -213,25 +210,15 @@ En este caso el <strong>UNS Path</strong> es</p>
 <p>Ejecutar una consulta como la siguiente (ajusta <strong>EDGE_NODE_ID</strong>, <strong>MSG LIKE</strong> y la ventana temporal):</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- SPARKPLUG_RAW
-SELECT
-  TO_TIMESTAMP_TZ(INSERTED_AT/1000) AS TS,
-  *
-FROM CL_BRIDGE_STAGE_DB.STAGE_DB.SPARKPLUG_RAW
-WHERE TS &gt;= DATEADD(hour, -4, CURRENT_TIMESTAMP()) -- Ajustar según cuánto tiempo atrás se quiera buscar
-  AND EDGE_NODE_ID = 'San Miguel'
-  AND MSG LIKE '%Coke/Setpoint_Kilogramos_Coke%'
-  AND MSG LIKE '%1756700957875%'
-ORDER BY TS DESC
-LIMIT 100;</code></pre>
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">WIP</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p>Buscar el campo MSG, seleccionar y buscar el path usando Ctrl + F</p>
-<div class="imageblock text-center">
+<div class="imageblock text-center unresolved">
 <div class="content">
-<img src="_images/cempro/snowflake_raw_query.png" alt="snowflake raw query" width="900">
+<img src="cempro/snowflake_raw_query.png" alt="snowflake raw query" width="900">
 </div>
 <div class="title">Figure 4. Query de verificación en Snowflake RAW</div>
 </div>
