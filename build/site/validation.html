@@ -127,7 +127,7 @@
 <p>Acceso a Snowflake (rol/warehouse con permisos de lectura en tabla RAW).</p>
 </li>
 <li>
-<p>Conocer el <strong>OPC Path</strong> y <strong>UNS Path</strong> del tag a validar.</p>
+<p>Identificar un tag de referencia para validar.</p>
 </li>
 </ul>
 </div>
@@ -143,93 +143,46 @@
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Ubicar el tag objetivo en la pantalla correspondiente del SCADA.</p>
-<div class="imageblock text-center unresolved">
-<div class="content">
-<img src="cempro/scada_tag_sample.png" alt="scada tag sample" width="800">
-</div>
-<div class="title">Figure 1. Captura de la tag en SCADA</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Ver el dato en Ignition</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Abrir el <strong>Tag Browser</strong> y localizar el tag.
-En este caso el <strong>UNS Path</strong> es</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Cempro/San Gabriel/Clinkerización/Horno 1/Edge/Aditivos/K9A_BW1_FA_I2.</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Clic derecho sobre la tag → <strong>View Diagnostics</strong>.</p>
+<p>Ubicar el tag objetivo, realizar una query que permita identificar valor y timestamp del tag, estos valores lo identifican desde su origen hasta su llegada en Snowflake.</p>
 <div class="imageblock text-center">
 <div class="content">
-<img src="_images/cempro/view_diagnostics.png" alt="view diagnostics" width="800">
+<img src="_images/cempro/val_ign.png" alt="val ign" width="800">
 </div>
-<div class="title">Figure 2. Ruta View Diagnostics</div>
-</div>
-</li>
-<li>
-<p>Confirmar que el <strong>Value</strong> coincide con lo observado en SCADA.</p>
-<div class="paragraph">
-<p><br>
-<br>
-<br>
-<br>
-<br></p>
+<div class="title">Figure 1. Captura de la tag en SCADA e Ignition</div>
 </div>
 </li>
 </ol>
 </div>
 </li>
-</ol>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="_images/cempro/ignition_diagnostic.png" alt="ignition diagnostic" width="800">
-</div>
-<div class="title">Figure 3. Ignition - View Diagnostics del tag</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
 <li>
 <p>Ver el dato en Snowflake</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Usar la marca de tiempo identificada y el <strong>UNS Path</strong> (del Ignition) para consultar la tabla RAW.</p>
+<p>Usar la marca de tiempo identificada y el <strong>value</strong> para consultar la tabla.</p>
 </li>
 <li>
-<p>Ejecutar una consulta como la siguiente (ajusta <strong>EDGE_NODE_ID</strong>, <strong>MSG LIKE</strong> y la ventana temporal):</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">WIP</code></pre>
-</div>
-</div>
+<p>Ejecutar una consulta filtrando en un rango de tiemstamp en la tabla de destino:</p>
 </li>
 <li>
-<p>Buscar el campo MSG, seleccionar y buscar el path usando Ctrl + F</p>
-<div class="imageblock text-center unresolved">
-<div class="content">
-<img src="cempro/snowflake_raw_query.png" alt="snowflake raw query" width="900">
-</div>
-<div class="title">Figure 4. Query de verificación en Snowflake RAW</div>
-</div>
-</li>
-<li>
-<p>Confirmar que el <strong>Value</strong> coincide con lo observado en SCADA e Ignition.</p>
+<p>Confirmar que el <strong>Value</strong> coincide con lo observado en Ignition.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="_images/cempro/snowflake1.png" alt="snowflake1" width="900">
+</div>
+<div class="title">Figure 2. Valor del dato en Snowflake</div>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="_images/cempro/snowflake2.png" alt="snowflake2" width="900">
+</div>
+<div class="title">Figure 3. Timestamp del dato en Snowflake</div>
 </div>
 <div class="admonitionblock important">
 <table>

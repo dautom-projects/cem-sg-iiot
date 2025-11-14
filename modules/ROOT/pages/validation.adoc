@@ -17,49 +17,27 @@ Este procedimiento aplica a cualquier tag publicado en el UNS y transportado por
 - Acceso al SCADA de planta.
 - Acceso al Ignition Designer (o Gateway + Tag Browser).
 - Acceso a Snowflake (rol/warehouse con permisos de lectura en tabla RAW).
-- Conocer el *OPC Path* y *UNS Path* del tag a validar.
+- Identificar un tag de referencia para validar.
 
 == Flujo de validación (paso a paso)
 
 . Visualizar la tag en el SCADA
-.. Ubicar el tag objetivo en la pantalla correspondiente del SCADA.
+.. Ubicar el tag objetivo, realizar una query que permita identificar valor y timestamp del tag, estos valores lo identifican desde su origen hasta su llegada en Snowflake.
 +
-image::cempro/scada_tag_sample.png[width=800,align=center,title="Captura de la tag en SCADA"]
-
-. Ver el dato en Ignition
-.. Abrir el *Tag Browser* y localizar el tag. 
-En este caso el *UNS Path* es 
-+
-[source,bash]
-----
-Cempro/San Gabriel/Clinkerización/Horno 1/Edge/Aditivos/K9A_BW1_FA_I2.
-----
-.. Clic derecho sobre la tag → *View Diagnostics*.
-+
-image::cempro/view_diagnostics.png[width=800,align=center,title="Ruta View Diagnostics"]
-.. Confirmar que el *Value* coincide con lo observado en SCADA.
-+
-+++<br>+++
-+++<br>+++
-+++<br>+++
-+++<br>+++
-+++<br>+++
-
-image::cempro/ignition_diagnostic.png[width=800,align=center,title="Ignition - View Diagnostics del tag"]
+image::cempro/val_ign.png[width=800,align=center,title="Captura de la tag en SCADA e Ignition"]
 
 . Ver el dato en Snowflake
-.. Usar la marca de tiempo identificada y el *UNS Path* (del Ignition) para consultar la tabla RAW.
-.. Ejecutar una consulta como la siguiente (ajusta *EDGE_NODE_ID*, *MSG LIKE* y la ventana temporal):
-+
-[source,sql]
-----
-WIP
-----
-+
-.. Buscar el campo MSG, seleccionar y buscar el path usando Ctrl + F
-+
-image::cempro/snowflake_raw_query.png[width=900,align=center,title="Query de verificación en Snowflake RAW"]
-.. Confirmar que el *Value* coincide con lo observado en SCADA e Ignition.
+.. Usar la marca de tiempo identificada y el *value* para consultar la tabla.
+.. Ejecutar una consulta filtrando en un rango de tiemstamp en la tabla de destino:
+.. Confirmar que el *Value* coincide con lo observado en Ignition.
+
+
+image::cempro/snowflake1.png[width=900,align=left,title="Valor del dato en Snowflake"]
+
+
+image::cempro/snowflake2.png[width=900,align=left,title="Timestamp del dato en Snowflake"]
+
+
 
 
 [IMPORTANT]
