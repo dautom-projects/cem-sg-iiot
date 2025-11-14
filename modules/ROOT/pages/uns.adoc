@@ -1,0 +1,88 @@
+= Modelado UNS en Ignition
+
+== Propósito del Modelado UNS
+
+El Unified Namespace (UNS) en Ignition transforma la estructura técnica de tags OPC UA en una jerarquía lógica y semánticamente consistente. Esta transformación permite que los datos industriales sean comprensibles y accesibles independientemente del sistema que los consuma.
+
+== Estructura Jerárquica ISA-95
+
+El modelado sigue la jerarquía funcional definida por ISA-95, organizando los datos desde el nivel empresarial hasta el nivel de equipos:
+
+[source]
+----
+Cempro (Enterprise)
+└── San Gabriel (Site)
+    └── Clinkerización (Area)
+        └── Horno 1 (Work Unit)
+            └── Edge
+                ├── Aditivos
+                ├── Alimentación horno
+                ├── Cemento 1
+                └── […]
+----
+
+== Transformación de Tags OPC UA
+
+=== Tags Originales del PLC
+
+Los tags provenientes del servidor OPC UA tienen estructura técnica poco descriptiva:
+
+*Ejemplo de path OPC UA*: `ns=1;s=t|E51_201_SRV01::K011/S14/G51/K9A_BW1_FD_I2/FD_I2.A1`
+
+Esta nomenclatura incluye:
+
+* `ns=1`: Namespace del servidor OPC UA
+* `s=t|E51_201_SRV01::`: Prefijo del sistema SCADA
+* `K011/S14/G51/K9A_BW1_FD_I2/FD_I2.A1`: Identificador técnico de la variable
+
+=== Tags Estructurados en UNS
+
+El mismo tag se modela en la estructura UNS como:
+
+*Path UNS*: `Cempro/San Gabriel/Clinkerización/Horno 1/Edge/Aditivos/K9A_BW1_FD_I2`
+
+Esta estructura proporciona contexto semántico:
+
+* *Cempro*: Empresa propietaria
+* *San Miguel*: Planta específica
+* *Clinkerización*: Área de producción 
+* *Horno 1*: Equipo específico
+* *Edge*: Tipo de dispositivo o sistema
+* *Aditivos*: Categoría funcional dentro del dispositivo
+* *K9A_BW1_FD_I2*: Variable específica
+
+== Implementación mediante UDTs
+
+=== User Defined Types (UDTs)
+
+Los UDTs actúan como plantillas que definen la estructura repetible para equipos similares:
+
+*Estructura de UDT para Horno*:
+
+[source]
+----
+Horno_UDT
+├── Parameters (configuración)
+│   ├── OPC: Siemens OPC
+│   └── Path: ns=1;s=t|E51_201_SRV01::
+├── Edge (variables de control)
+    ├── Aditivos
+        ├──K9A_BW1_FA_I2
+        ├──K9A_BW1_FB_I2
+        ├──K9A_BW1_FC_I2
+        └── […]
+----
+
+=== Instanciación en Tag Provider
+
+Las instancias de UDTs se crean en el Tag Provider `CEM_UNS` siguiendo la estructura jerárquica definida.
+
+== Beneficios del Modelado
+
+*Escalabilidad*:: Agregar nuevos hornos o áreas requiere solo instanciar UDTs existentes con nuevos parámetros.
+
+*Consistencia*:: Todos los equipos similares siguen la misma estructura, facilitando el desarrollo de aplicaciones.
+
+*Trazabilidad*:: La jerarquía completa identifica inequívocamente cada variable y su contexto operacional.
+
+*Interoperabilidad*:: Sistemas downstream pueden navegar la estructura sin conocimiento específico del PLC original.
